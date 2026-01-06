@@ -1,81 +1,313 @@
-/* 全域樣式 */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ==========================================
+   Bootstrap 5 自訂樣式表
+   ========================================== */
+
+/* 全域字體設定 */
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --success-color: #198754;
+    --info-color: #0dcaf0;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+    --font-family-main: 'Microsoft JhengHei', '微軟正黑體', sans-serif;
 }
 
 body {
-    font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;
-    line-height: 1.6;
-    color: #333;
+    font-family: var(--font-family-main);
+    scroll-behavior: smooth;
 }
 
-/* 標題區域 */
-header {
-    background-color: #2c3e50;
+/* ==========================================
+   歡迎區塊樣式
+   ========================================== */
+.hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    padding: 1rem 0;
+}
+
+.hero-section h1 {
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================
+   翻牌卡片效果
+   ========================================== */
+.flip-card {
+    background-color: transparent;
+    height: 350px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
     text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
 }
 
-header h1 {
-    margin-bottom: 1rem;
+/* 翻轉狀態 */
+.flip-card.flipped .flip-card-inner,
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
 }
 
-nav ul {
-    list-style: none;
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 0.5rem;
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 2rem;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-nav a:hover {
-    color: #3498db;
-}
-
-/* 主要內容 */
-main {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-}
-
-section {
-    margin-bottom: 3rem;
     padding: 2rem;
-    background-color: #f9f9f9;
-    border-radius: 8px;
 }
 
-section h2 {
-    color: #2c3e50;
-    margin-bottom: 1rem;
+/* 卡片正面樣式 */
+.flip-card-front {
+    background-color: white;
+    color: var(--dark-color);
+    border: 2px solid #dee2e6;
 }
 
-/* 頁尾 */
-footer {
-    background-color: #2c3e50;
+.flip-card-front .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.flip-card-front i {
+    transition: transform 0.3s ease;
+}
+
+.flip-card:hover .flip-card-front i {
+    transform: scale(1.1);
+}
+
+/* 卡片背面樣式 */
+.flip-card-back {
+    transform: rotateY(180deg);
     color: white;
-    text-align: center;
-    padding: 1rem;
-    margin-top: 2rem;
 }
 
-/* 響應式設計 */
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        gap: 0.5rem;
+.flip-card-back ul {
+    text-align: left;
+}
+
+.flip-card-back li {
+    margin-bottom: 0.5rem;
+}
+
+/* ==========================================
+   區塊間距
+   ========================================== */
+section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+/* ==========================================
+   聯絡表單樣式
+   ========================================== */
+#contactForm .form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+#contactForm .btn-primary {
+    padding: 0.75rem 2.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+#contactForm .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================
+   頁尾樣式
+   ========================================== */
+footer {
+    margin-top: 0;
+}
+
+footer h5 {
+    font-weight: bold;
+}
+
+/* ==========================================
+   Navbar 導覽列樣式
+   ========================================== */
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* ==========================================
+   圖片輪播樣式
+   ========================================== */
+.carousel-item img {
+    height: 500px;
+    object-fit: cover;
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+/* ==========================================
+   響應式設計
+   ========================================== */
+@media (max-width: 991px) {
+    .flip-card {
+        height: 320px;
     }
 
+    .carousel-item img {
+        height: 400px;
+    }
+}
+
+@media (max-width: 767px) {
     section {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .flip-card {
+        height: 300px;
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+        padding: 1.5rem;
+    }
+
+    .carousel-item img {
+        height: 250px;
+    }
+
+    .carousel-caption {
         padding: 1rem;
     }
+
+    .carousel-caption h5 {
+        font-size: 1rem;
+    }
+
+    .carousel-caption p {
+        font-size: 0.875rem;
+        display: none;
+    }
+
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .flip-card-back ul {
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .flip-card {
+        height: 280px;
+    }
+
+    .display-1 {
+        font-size: 3rem !important;
+    }
+}
+
+/* ==========================================
+   動畫效果
+   ========================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* ==========================================
+   滾動條樣式
+   ========================================== */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0b5ed7;
+}
+
+/* ==========================================
+   Bootstrap 顏色主題覆蓋
+   ========================================== */
+.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+/* ==========================================
+   工具類別
+   ========================================== */
+.text-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.shadow-lg {
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
 }
