@@ -1,0 +1,49 @@
+# 檔案名稱：.github/workflows/call-glm-api.yml
+
+name: Call GLM API
+
+# 觸發條件：當程式碼被推送到 main 分支時
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  call-api:
+    # 使用最新版的 Ubuntu 虛擬環境
+    runs-on: ubuntu-latest
+    
+    steps:
+      # 步驟 1：檢出你的專案程式碼
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 步驟 2：使用 curl 呼叫 GLM API
+      - name: Call GLM-4 API
+        # 使用 shell 執行指令
+        shell: bash
+        run: |
+          # 準備要發送的 JSON 數據
+          # 你可以根據需求修改 model, messages, temperature 等參數
+          JSON_DATA=$(cat <<EOF
+          {
+            "model": "glm-4",
+            "messages": [
+              {"role": "user", "content": "你好，請用一句話介紹 GitHub Actions。"}
+            ],
+            "temperature": 0.7,
+            "max_tokens": 1024
+          }
+          EOF
+          )
+          
+          # 使用 curl 發送 POST 請求
+          # -X POST: 指定 HTTP 方法為 POST
+          # -H "Content-Type: application/json": 設定請求頭
+          # -H "Authorization: Bearer ${{ secrets.ZAI_API_KEY }}": 使用我們剛剛設定的 Secret
+          # -d "$JSON_DATA": 發送 JSON 數據
+          # API 端點 URL 請參考 Z.ai 官方文件
+          curl -X POST "https://open.bigmodel.cn/api/paas/v4/chat/completions" \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer ${{ secrets.ZAI_API_KEY }}" \
+            -d "$JSON_DATA"
