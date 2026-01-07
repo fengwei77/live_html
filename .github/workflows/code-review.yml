@@ -1,0 +1,100 @@
+# 檔案名稱：.github/workflows/code-review.yml
+
+name: AI Code Review with GLM
+
+# 觸發條件：當有新的或被更新的 Pull Request 針對 main 分支時
+on:
+  pull_request:
+    branches: [ main ]
+    types: [opened, synchronize] # 'synchronize' 代表有新的 commit 被 push 到 PR
+
+jobs:
+  code-review:
+    runs-on: ubuntu-latest
+    permissions:
+      # 需要這個權限才能在 PR 上發布評論
+      pull-requests: write
+
+    steps:
+      # 步驟 1：檢出程式碼
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # 需要檢出所有歷史記錄，才能正確計算 diff
+          fetch-depth: 0
+
+      # 步驟 2：獲取程式碼差異
+      - name: Get Code Diff
+        id: get-diff
+        run: |
+          # 使用 git diff 獲取目標分支和當前分支的差異
+          # --unified=0 表示不顯示上下文，只顯示變更的行
+          DIFF=$(git diff --unified=0 origin/${{ github.event.pull_request.base.ref }}...${{ github.event.pull_request.head.ref }})
+          # 將 diff 內容存為環境變數，並處理特殊字元
+          echo "diff<<EOF" >> $GITHUB_OUTPUT
+          echo "$DIFF" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      # 步驟 3：呼叫 GLM API 進行程式碼審查
+      - name: Call GLM for Code Review
+        id: call-glm
+        run: |
+          # 準備一個專業的提示詞
+          PROMPT=$(cat <<EOF
+          你是一位資深軟體工程師和程式碼審查專家。請仔細審查以下程式碼變更（Git Diff 格式），並提供回饋。
+
+          請從以下幾個角度進行分析：
+          1.  **潛在錯誤**：是否有邏輯錯誤、空指針、邊界條件問題等？
+          2.  **安全性問題**：是否存在潛在的安全漏洞，如 SQL 注入、XSS、權限繞過等？
+          3.  **效能問題**：是否有低效的演算法、不必要的資源消耗、N+1 查詢等？
+          4.  **程式碼品質與可讀性**：程式碼是否清晰、易於維護？是否遵循了良好的編碼規範？
+          5.  **改進建議**：提供具體的、可執行的改進建議。
+
+          請使用 Markdown 格式回覆，結構清晰，對問題點進行引用。
+
+          --- 程式碼差異開始 ---
+          ${{ steps.get-diff.outputs.diff }}
+          --- 程式碼差異結束 ---
+          EOF
+          )
+
+          # 使用 curl 呼叫 GLM API
+          RESPONSE=$(curl -s -X POST "https://open.bigmodel.cn/api/paas/v4/chat/completions" \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer ${{ secrets.ZAI_API_KEY }}" \
+            -d "{
+              \"model\": \"glm-4\",
+              \"messages\": [
+                {\"role\": \"user\", \"content\": \"$PROMPT\"}
+              ],
+              \"temperature\": 0.3,
+              \"max_tokens\": 2000
+            }")
+
+          # 使用 jq 從 JSON 回應中提取審查內容
+          # 如果沒有安裝 jq，可以先執行 sudo apt-get install jq
+          REVIEW_CONTENT=$(echo "$RESPONSE" | jq -r '.choices[0].message.content')
+          
+          # 將審查內容存為環境變數，供下一步使用
+          echo "review<<EOF" >> $GITHUB_OUTPUT
+          echo "$REVIEW_CONTENT" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      # 步驟 4：將審查結果作為評論發布到 Pull Request
+      - name: Post Review Comment to PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const reviewOutput = `${{ steps.call-glm.outputs.review }}`;
+            
+            // 檢查是否有實質的審查內容
+            if (reviewOutput && reviewOutput.trim() !== '') {
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: `### 🤖 GLM 程式碼審查報告\n\n${reviewOutput}`
+              });
+            } else {
+              console.log("GLM 沒有返回審查內容，或 diff 為空，跳過發布評論。");
+            }
