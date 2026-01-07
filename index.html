@@ -30,10 +30,16 @@
                         <a class="nav-link" href="#home">首頁</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#carousel-section">圖片輪播</a>
+                        <a class="nav-link" href="#about">關於我們</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#flip-cards-section">翻牌效果</a>
+                        <a class="nav-link" href="#services">服務項目</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#news">最新消息</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">作品展示</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">聯絡我們</a>
@@ -44,87 +50,32 @@
     </nav>
 
     <main>
-        <!-- 歡迎區塊 -->
+        <!-- Hero Banner 區塊 -->
         <section id="home" class="hero-section py-5">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 mx-auto text-center">
-                        <h1 class="display-4 mb-4">歡迎來到我的網站</h1>
-                        <p class="lead">這是一個使用 Bootstrap 5 建立的響應式網站，包含圖片輪播和翻牌效果等互動功能。</p>
-                        <a href="#carousel-section" class="btn btn-primary btn-lg mt-3">
-                            <i class="bi bi-arrow-down-circle"></i> 探索更多
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 圖片輪播區塊 -->
-        <section id="carousel-section" class="py-5 bg-light">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="text-center mb-4">圖片輪播展示</h2>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-10 mx-auto">
-                        <!-- Bootstrap Carousel -->
-                        <div id="mainCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                            <!-- 輪播指示器 -->
-                            <div class="carousel-indicators">
-                                <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                            </div>
-
-                            <!-- 輪播內容 -->
-                            <div class="carousel-inner rounded-4 shadow">
-                                <div class="carousel-item active">
-                                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=500&fit=crop" class="d-block w-100" alt="山景">
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h5>壯麗山景</h5>
-                                        <p>探索大自然的奇觀</p>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&h=500&fit=crop" class="d-block w-100" alt="海灘">
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h5>熱帶海灘</h5>
-                                        <p>享受陽光與海浪</p>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1200&h=500&fit=crop" class="d-block w-100" alt="森林">
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h5>神秘森林</h5>
-                                        <p>探索綠色的世界</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- 輪播控制按鈕 -->
-                            <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">上一張</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">下一張</span>
-                            </button>
+                        <h1 class="display-4 mb-4">專業的網頁設計與開發團隊</h1>
+                        <p class="lead mb-5">我們提供全方位的網頁解決方案，從設計到開發，為您打造專業的網站</p>
+                        <div class="d-flex justify-content-center gap-3 flex-wrap">
+                            <a href="#about" class="btn btn-outline-light btn-lg">
+                                <i class="bi bi-info-circle"></i> 了解更多
+                            </a>
+                            <a href="#contact" class="btn btn-warning btn-lg text-white" style="background-color: var(--accent-color); border-color: var(--accent-color);">
+                                <i class="bi bi-chat-dots"></i> 立即諮詢
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 翻牌效果區塊 -->
-        <section id="flip-cards-section" class="py-5">
+        <!-- 服務項目區塊 -->
+        <section id="services" class="py-5">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h2 class="text-center mb-5">翻牌效果展示</h2>
+                        <h2 class="text-center mb-5">服務項目</h2>
                         <p class="text-center text-muted mb-4">點擊卡片或將滑鼠移上卡片查看內容</p>
                     </div>
                 </div>
@@ -190,20 +141,20 @@
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
                                     <div class="card-body text-center">
-                                        <i class="bi bi-graph-up display-1 text-warning mb-3"></i>
-                                        <h5 class="card-title">數位行銷</h5>
-                                        <p class="card-text">成長您的業務</p>
+                                        <i class="bi bi-tools display-1 text-warning mb-3"></i>
+                                        <h5 class="card-title">網站維護</h5>
+                                        <p class="card-text">穩定的營運支援</p>
                                         <span class="badge bg-warning text-dark">點擊翻轉</span>
                                     </div>
                                 </div>
                                 <div class="flip-card-back bg-warning">
                                     <div class="card-body text-center text-dark">
-                                        <h5 class="card-title">數位行銷服務</h5>
-                                        <p class="card-text">全方位的數位行銷策略，提升您的品牌曝光度和業績。</p>
+                                        <h5 class="card-title">網站維護服務</h5>
+                                        <p class="card-text">提供專業的網站維護和技術支援，確保您的網站穩定運作。</p>
                                         <ul class="list-unstyled mt-3">
-                                            <li><i class="bi bi-check-circle"></i> SEO 優化</li>
-                                            <li><i class="bi bi-check-circle"></i> 社群經營</li>
-                                            <li><i class="bi bi-check-circle"></i> 廣告投放</li>
+                                            <li><i class="bi bi-check-circle"></i> 定期備份</li>
+                                            <li><i class="bi bi-check-circle"></i> 安全更新</li>
+                                            <li><i class="bi bi-check-circle"></i> 24/7 支援</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -214,8 +165,160 @@
             </div>
         </section>
 
+        <!-- 關於我們區塊 -->
+        <section id="about" class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="text-center mb-5">關於我們</h2>
+                    </div>
+                </div>
+
+                <div class="row align-items-center">
+                    <div class="col-lg-6 mb-4 mb-lg-0">
+                        <h3 class="mb-4">專業團隊，用心服務</h3>
+                        <p class="mb-3">我們是一支充滿熱情的網頁設計與開發團隊，致力於為客戶提供高品質的網頁解決方案。從設計到開發，我們始終堅持以使用者為中心的理念，打造出既美觀又實用的網站。</p>
+                        <p class="mb-4">多年來，我們已經服務了超過 500 家企業，涵蓋各種產業。我們的專業團隊擁有豐富的經驗，能夠滿足您各種不同的需求。</p>
+                        <div class="d-flex gap-4 mb-4">
+                            <div class="text-center">
+                                <h4 class="text-primary mb-0">500+</h4>
+                                <small class="text-muted">服務客戶</small>
+                            </div>
+                            <div class="text-center">
+                                <h4 class="text-primary mb-0">1000+</h4>
+                                <small class="text-muted">完成專案</small>
+                            </div>
+                            <div class="text-center">
+                                <h4 class="text-primary mb-0">98%</h4>
+                                <small class="text-muted">客戶滿意度</small>
+                            </div>
+                        </div>
+                        <a href="#contact" class="btn btn-primary">
+                            <i class="bi bi-envelope"></i> 聯絡我們
+                        </a>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop" alt="團隊合作" class="img-fluid rounded-4 shadow">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 最新消息區塊 -->
+        <section id="news" class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="text-center mb-5">最新消息</h2>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <!-- 新聞卡片 1 -->
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop" class="card-img-top" alt="新聞圖片">
+                            <div class="card-body">
+                                <small class="text-muted"><i class="bi bi-calendar3"></i> 2026-01-05</small>
+                                <h5 class="card-title mt-2">網站響應速度優化服務</h5>
+                                <p class="card-text">我們推出全新的網站效能優化服務，協助您提升網站載入速度...</p>
+                                <a href="#" class="btn btn-sm btn-outline-primary">閱讀更多</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 新聞卡片 2 -->
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=250&fit=crop" class="card-img-top" alt="新聞圖片">
+                            <div class="card-body">
+                                <small class="text-muted"><i class="bi bi-calendar3"></i> 2026-01-03</small>
+                                <h5 class="card-title mt-2">全新品牌形象網站上線</h5>
+                                <p class="card-text">熱烈慶祝我們全新設計的品牌形象網站正式上線營運...</p>
+                                <a href="#" class="btn btn-sm btn-outline-primary">閱讀更多</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 新聞卡片 3 -->
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=400&h=250&fit=crop" class="card-img-top" alt="新聞圖片">
+                            <div class="card-body">
+                                <small class="text-muted"><i class="bi bi-calendar3"></i> 2026-01-01</small>
+                                <h5 class="card-title mt-2">2026 年度優惠活動開跑</h5>
+                                <p class="card-text">全新年度優惠活動正式展開，即日起至月底享有專案折扣...</p>
+                                <a href="#" class="btn btn-sm btn-outline-primary">閱讀更多</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 作品展示區塊 -->
+        <section id="portfolio" class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="text-center mb-5">作品展示</h2>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <!-- 作品卡片 1 -->
+                    <div class="col-md-6">
+                        <div class="card h-100 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=300&fit=crop" class="card-img-top" alt="作品圖片">
+                            <div class="card-body">
+                                <h5 class="card-title">電商平台設計</h5>
+                                <p class="card-text">為知名品牌打造的全方位電商平台，整合購物車、會員系統、金流整合等功能。</p>
+                                <a href="#" class="btn btn-primary">查看詳情</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 作品卡片 2 -->
+                    <div class="col-md-6">
+                        <div class="card h-100 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&h=300&fit=crop" class="card-img-top" alt="作品圖片">
+                            <div class="card-body">
+                                <h5 class="card-title">企業官網設計</h5>
+                                <p class="card-text">專業企業官網設計，展現品牌形象，提供完整的企業資訊和服務介紹。</p>
+                                <a href="#" class="btn btn-primary">查看詳情</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 作品卡片 3 -->
+                    <div class="col-md-6">
+                        <div class="card h-100 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1555421689-d68471e189f2?w=600&h=300&fit=crop" class="card-img-top" alt="作品圖片">
+                            <div class="card-body">
+                                <h5 class="card-title">餐飲品牌網站</h5>
+                                <p class="card-text">為知名餐飲品牌設計的響應式官網，整合線上訂位、菜單展示等功能。</p>
+                                <a href="#" class="btn btn-primary">查看詳情</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 作品卡片 4 -->
+                    <div class="col-md-6">
+                        <div class="card h-100 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=300&fit=crop" class="card-img-top" alt="作品圖片">
+                            <div class="card-body">
+                                <h5 class="card-title">教育平台開發</h5>
+                                <p class="card-text">線上教育學習平台，提供課程管理、線上測驗、學員追蹤等完整功能。</p>
+                                <a href="#" class="btn btn-primary">查看詳情</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- 聯絡我們區塊 -->
-        <section id="contact" class="py-5 bg-light">
+        <section id="contact" class="py-5">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -224,9 +327,11 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-8 mx-auto">
+                    <!-- 左側表單 -->
+                    <div class="col-lg-7 mb-4 mb-lg-0">
                         <div class="card shadow">
                             <div class="card-body p-4">
+                                <h4 class="mb-4">傳送訊息給我們</h4>
                                 <form id="contactForm">
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
@@ -246,12 +351,82 @@
                                         <label for="message" class="form-label">訊息內容</label>
                                         <textarea class="form-control" id="message" rows="5" required></textarea>
                                     </div>
-                                    <div class="text-center">
-                                        <button type="submit" class="btn btn-primary btn-lg">
-                                            <i class="bi bi-send-fill"></i> 送出訊息
-                                        </button>
-                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        <i class="bi bi-send-fill"></i> 送出訊息
+                                    </button>
                                 </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 右側聯絡資訊 -->
+                    <div class="col-lg-5">
+                        <div class="card shadow h-100">
+                            <div class="card-body p-4">
+                                <h4 class="mb-4">聯絡資訊</h4>
+
+                                <div class="contact-info-item mb-4">
+                                    <div class="d-flex align-items-start">
+                                        <div class="flex-shrink-0">
+                                            <div class="contact-icon">
+                                                <i class="bi bi-geo-alt-fill text-primary fs-4"></i>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h5 class="mb-1">公司地址</h5>
+                                            <p class="mb-0 text-muted">台北市信義區信義路五段7號</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="contact-info-item mb-4">
+                                    <div class="d-flex align-items-start">
+                                        <div class="flex-shrink-0">
+                                            <div class="contact-icon">
+                                                <i class="bi bi-telephone-fill text-primary fs-4"></i>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h5 class="mb-1">聯絡電話</h5>
+                                            <p class="mb-0 text-muted">(02) 1234-5678</p>
+                                            <p class="mb-0 text-muted">週一至週五 9:00-18:00</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="contact-info-item mb-4">
+                                    <div class="d-flex align-items-start">
+                                        <div class="flex-shrink-0">
+                                            <div class="contact-icon">
+                                                <i class="bi bi-envelope-fill text-primary fs-4"></i>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h5 class="mb-1">電子郵件</h5>
+                                            <p class="mb-0 text-muted">contact@example.com</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <div class="mt-4">
+                                    <h5 class="mb-3">關注我們</h5>
+                                    <div class="d-flex gap-3">
+                                        <a href="#" class="btn btn-outline-primary btn-sm">
+                                            <i class="bi bi-facebook"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-outline-primary btn-sm">
+                                            <i class="bi bi-instagram"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-outline-primary btn-sm">
+                                            <i class="bi bi-linkedin"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-outline-primary btn-sm">
+                                            <i class="bi bi-line"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
